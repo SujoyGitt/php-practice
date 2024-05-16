@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .dropbtn {
+        background-color: #04aa6d;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+      }
+
+      /* The container <div> - needed to position the dropdown content */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      /* Dropdown Content (Hidden by Default) */
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+
+      /* Links inside the dropdown */
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+
+      /* Change color of dropdown links on hover */
+      .dropdown-content a:hover {
+        background-color: #ddd;
+      }
+
+      /* Show the dropdown menu on hover */
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      /* Change the background color of the dropdown button when the dropdown content is shown */
+      .dropdown:hover .dropbtn {
+        background-color: #3e8e41;
+      }
+
+      .card {
+        display: none; /* Initially hide all cards */
+        padding: 20px;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dropdown">
+      <button class="dropbtn">Dropdown</button>
+      <div class="dropdown-content">
+        <a href="#" class="dropdown-item" data-category="category1"
+          >Category 1</a
+        >
+        <a href="#" class="dropdown-item" data-category="category2"
+          >Category 2</a
+        >
+        <a href="#" class="dropdown-item" data-category="category3"
+          >Category 3</a
+        >
+      </div>
+    </div>
+
+    <div class="category-cards">
+      <div class="card" data-category="category1">Content for Category 1</div>
+      <div class="card" data-category="category2" style="display: none">
+        Content for Category 2
+      </div>
+      <div class="card" data-category="category3" style="display: none">
+        Content for Category 3
+      </div>
+    </div>
+
+    <script>
+      const dropdownContent = document.querySelector(".dropdown-content");
+      const categoryCards = document.querySelectorAll(".card");
+
+      dropdownContent.addEventListener("click", function (event) {
+        const selectedCategory = event.target.dataset.category; // Get selected category
+
+        // Hide all cards first
+        categoryCards.forEach((card) => (card.style.display = "none"));
+
+        // Show the matching card
+        categoryCards.forEach((card) => {
+          if (card.dataset.category === selectedCategory) {
+            card.style.display = "block";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
